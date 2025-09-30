@@ -1,1 +1,0 @@
-# laxy-zeller-codechallenge
