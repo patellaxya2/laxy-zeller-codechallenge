@@ -127,7 +127,7 @@ const DashBoardScreen: React.FC<DashBoardScreenProps> = ({ navigation }) => {
                     alignSelf: "center",
                     width: '85%',
                     borderWidth: 1,
-                    borderColor: '#ccc',
+                    borderColor: theme.colors.light_gray,
                     padding: 10,
                     marginVertical: 15,
                     borderRadius: 40
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         height: 40,
-        backgroundColor: '#F0F2F5',
+        backgroundColor: theme.colors.smoke_gray,
         borderRadius: 20,
         width: "80%",
         position: 'relative',
@@ -200,23 +200,23 @@ const styles = StyleSheet.create({
         color: "#333",
     },
     tabTextActive: {
-        color: "#007aff",
+        color: theme.colors.secondary,
         fontWeight: "600",
     },
     indicator: {
         position: 'absolute',
         height: "100%",
-        borderColor: "#007aff", borderRadius: 20, borderWidth: 1,
+        borderColor: theme.colors.secondary, borderRadius: 20, borderWidth: 1,
         left: 0,
         zIndex: 1,
     },
-    tabActive: { borderColor: "#007aff", borderRadius: 20, borderWidth: 1, },
+    tabActive: { borderColor: theme.colors.secondary, borderRadius: 20, borderWidth: 1, },
 
     sectionHeader: {
         paddingHorizontal: 16,
         paddingVertical: 6,
         fontWeight: "bold",
-        backgroundColor: "#f9f9f9",
+        backgroundColor: theme.colors.very_light_gray,
     },
     fab: {
         position: "absolute",
@@ -225,10 +225,10 @@ const styles = StyleSheet.create({
         width: 52,
         height: 52,
         borderRadius: 26,
-        backgroundColor: "#007aff",
+        backgroundColor: theme.colors.secondary,
         justifyContent: "center",
         alignItems: "center",
         elevation: 3,
     },
-    fabText: { fontSize: 28, color: "#fff", textAlign: "center" },
+    fabText: { fontSize: 28, color: theme.colors.primary, textAlign: "center" },
 });

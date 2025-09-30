@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { IZellerCustomer } from '../types'
 import { EROLES } from '../utils/enum'
+import theme from '../styles/theme'
 
 function UserItem({ item }: { item: IZellerCustomer }) {
 
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginRight: 12,
     },
-    avatarText: { color: "#007aff", fontWeight: "600" },
+    avatarText: { color: theme.colors.secondary, fontWeight: "600" },
     name: { flex: 1, fontSize: 16 },
     role: { color: "#999", fontSize: 12 },
 

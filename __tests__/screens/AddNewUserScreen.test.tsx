@@ -7,6 +7,7 @@ import { validateEmail, validateName } from "../../src/utils/functinos";
 import { EROLES } from "../../src/utils/enum";
 import { ZellerCustomer } from "../../src/realm/models/ZellerCustomer";
 import { act } from "react";
+import React from "react";
 
 const mockStartAnimation = jest.fn()
 jest.mock("../../src/hooks/useTabAnimation", () => {
@@ -32,6 +33,12 @@ jest.mock("../../src/realm/setup", () => ({
     })
 }))
 
+describe('Snapshot', () => {
+    test('should Snapshot match', () => {
+        const { toJSON } = render(<AddNewUserScreen navigation={navigation as any} route={{} as any} />);
+        expect(toJSON()).toMatchSnapshot()
+    })
+})
 describe('AddNewUserScreen', () => {
     beforeEach(() => {
         jest.clearAllMocks();

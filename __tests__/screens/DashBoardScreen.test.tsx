@@ -7,6 +7,7 @@ import { NativeStackNavigationProp, NativeStackScreenProps } from "@react-naviga
 import { IZellerCustomer, StackParamList } from "../../src/types";
 import { EROLES } from "../../src/utils/enum";
 import { Text } from "react-native";
+import theme from "../../src/styles/theme";
 
 
 // Mock navigation
@@ -33,11 +34,7 @@ jest.mock('../../src/realm/setup', () => ({
     ];
     return {
       filtered: (query: string, ...args: any[]) => {
-        console.log('query: args  ', query, args);
 
-        // const roleName = role.replace(/"/g, '').split('=')[1]?.trim() || role;
-
-        // return role === 'ALL' ? true : item.role == roleName
         let result = data;
         if (query.includes(`role == $0`)) {
           result = result.filter((item) => item.role === args[0])
@@ -81,7 +78,13 @@ jest.doMock('../../src/components/UserItem', () => ({
   default: ({ item }: { item: IZellerCustomer }) => <Text>{item.name}</Text>,
 }));
 
-// ------------------ TESTS ------------------ //
+
+describe('Snapshot', () => {
+  test('should Snapshot match', () => {
+    const { toJSON } = render(<DashBoardScreen navigation={mockNavigate as any} route={mockRoute} />);
+    expect(toJSON()).toMatchSnapshot()
+  })
+})
 
 describe("DashBoardScreen Integration Tests", () => {
   let getByText: any;
@@ -157,7 +160,7 @@ describe("handlePageSelected for pagerview", () => {
     const text = within(tab).getByText("Admin");
     // Expect role is updated in UI
     expect(text).toHaveStyle({
-      color: "#007aff",
+      color: theme.colors.secondary,
       fontWeight: "600",
     });
 
@@ -219,3 +222,5 @@ describe('search functionality', () => {
     expect(queryByText('Bob')).toBeNull();
   });
 });
+
+

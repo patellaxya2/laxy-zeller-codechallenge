@@ -1,5 +1,6 @@
 import React, { memo, } from 'react'
 import { Animated, StyleSheet, Text, TouchableOpacity, View, useAnimatedValue } from 'react-native';
+import theme from '../styles/theme';
 
 interface AnimatedTabViewProps {
     items: string[];
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         height: 40,
-        backgroundColor: '#F0F2F5',
+        backgroundColor: theme.colors.smoke_gray,
         borderRadius: 20,
         width: "80%",
         position: 'relative',
@@ -83,17 +84,17 @@ const styles = StyleSheet.create({
         color: "#333",
     },
     tabTextActive: {
-        color: "#007aff",
+        color: theme.colors.secondary,
         fontWeight: "600",
     },
     indicator: {
         position: 'absolute',
         height: "100%",
-        borderColor: "#007aff", borderRadius: 20, borderWidth: 1,
+        borderColor: theme.colors.secondary, borderRadius: 20, borderWidth: 1,
         left: 0,
         zIndex: 1,
     },
-    tabActive: { borderColor: "#007aff", borderRadius: 20, borderWidth: 1, },
+    tabActive: { borderColor: theme.colors.secondary, borderRadius: 20, borderWidth: 1, },
 
 
 })

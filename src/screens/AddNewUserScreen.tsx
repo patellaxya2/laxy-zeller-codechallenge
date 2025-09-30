@@ -115,11 +115,11 @@ export default AddNewUserScreen
 const styles = StyleSheet.create({
     modalContainer: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: theme.colors.primary,
 
     },
     modalContent: {
-        backgroundColor: '#fff',
+        backgroundColor: theme.colors.primary,
         paddingHorizontal: 20,
         borderRadius: 10,
         width: '100%',
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     input: {
         width: '100%',
         borderBottomWidth: 1,
-        borderColor: '#ccc',
+        borderColor: theme.colors.light_gray,
         padding: 10,
         marginVertical: 15,
     },
@@ -149,26 +149,26 @@ const styles = StyleSheet.create({
     roleButton: {
         padding: 10,
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: theme.colors.light_gray,
         borderRadius: 15,
         flex: 1,
         marginHorizontal: 5,
     },
     selectedRole: {
-        backgroundColor: '#007AFF',
+        backgroundColor: theme.colors.secondary,
     },
     roleText: {
         textAlign: 'center',
     },
     createButton: {
-        backgroundColor: '#007AFF',
+        backgroundColor: theme.colors.secondary,
         padding: 15,
         borderRadius: 20,
         width: '100%',
         alignItems: 'center',
     },
     createButtonText: {
-        color: '#fff',
+        color: theme.colors.primary,
         fontWeight: 'bold',
     },
     closeButton: {
