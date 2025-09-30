@@ -13,7 +13,6 @@ import AnimatedTabView from '../components/AnimatedTabView'
 import useTabAnimation from '../hooks/useTabAnimation'
 import { useQuery } from '../realm/setup'
 import { ZellerCustomer } from '../realm/models/ZellerCustomer'
-import Loader from '../components/Loader'
 import { Results } from 'realm'
 
 
@@ -24,7 +23,6 @@ const DashBoardScreen: React.FC<DashBoardScreenProps> = ({ navigation }) => {
     const { translateX, startAnimation, tabWidth } = useTabAnimation({ items: roles });
     const [selected, setSelected] = useState<string>(roles[0]);
     const pagerRef = useRef<PagerView>(null);
-    const [loader, setLoader] = useState(false)
     const [searchName, setSearchName] = useState("")
 
     const animateToTab = (index: number) => {
@@ -109,7 +107,6 @@ const DashBoardScreen: React.FC<DashBoardScreenProps> = ({ navigation }) => {
                 barStyle={'dark-content'}
                 backgroundColor={theme.colors.primary}
             />
-            <Loader visible={loader} />
 
 
             <AnimatedTabView
