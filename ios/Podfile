@@ -29,7 +29,7 @@ target 'ZellerRNCodeChallenge' do
   end
 
   post_install do |installer|
-    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+    # React Native required post install
     react_native_post_install(
       installer,
       config[:reactNativePath],
