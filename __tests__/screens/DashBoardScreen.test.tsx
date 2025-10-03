@@ -129,6 +129,17 @@ describe("DashBoardScreen Integration Tests", () => {
     expect(getByText("Charlie")).toBeTruthy();;
     expect(queryByText("Bob")).toBeNull();;
   });
+  it("renders only Manager customers when filtered", () => {
+
+
+    // Simulate tab press for Manager
+    const managerTab = getByTestId('tab-Manager');
+    fireEvent.press(managerTab);
+
+    expect(queryByText("Alice")).toBeNull();
+    expect(queryByText("Charlie")).toBeNull();;
+    expect(queryByText("Bob")).toBeTruthy();;
+  });
 
 
 

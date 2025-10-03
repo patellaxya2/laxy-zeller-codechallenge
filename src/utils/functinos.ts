@@ -42,3 +42,21 @@ export const validateEmail = (email: string) => {
   if (!emailRegex.test(email)) return 'Invalid email format';
   return '';
 };
+
+
+export const groupByLetter = (data: IZellerCustomer[]) => {
+  const sorted = [...data].sort((a, b) => a.name.localeCompare(b.name));
+  const grouped: { title: string; data: IZellerCustomer[] }[] = [];
+
+  sorted.forEach((item) => {
+      const letter = item.name[0].toUpperCase();
+      const section = grouped.find((g) => g.title === letter);
+      if (section) {
+          section.data.push(item);
+      } else {
+          grouped.push({ title: letter, data: [item] });
+      }
+  });
+
+  return grouped;
+};

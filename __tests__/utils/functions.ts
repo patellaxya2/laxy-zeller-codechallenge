@@ -1,7 +1,7 @@
 import { ZellerCustomer } from "../../src/realm/models/ZellerCustomer";
 import { IZellerCustomer } from "../../src/types";
 import { EROLES } from "../../src/utils/enum";
-import { syncZellerCustomers, validateEmail, validateName } from "../../src/utils/functinos"
+import { groupByLetter, syncZellerCustomers, validateEmail, validateName } from "../../src/utils/functinos"
 import Realm, { BSON } from "realm";
 
 
@@ -97,3 +97,25 @@ describe('validateName', () => {
       );
     });
   });
+
+describe('groupByLetter', () => { 
+  test('should return valid array', () => { 
+    const data: IZellerCustomer[] = [{
+      email: "abc@gmail.com",
+      id: '1245',
+      name: "Abc",
+      role:EROLES.ADMIN
+    }]    
+    const result = groupByLetter(data);
+    
+    expect(result).toMatchObject([{ title: 'A', data: [{id:"1245",name:"Abc"}]}])
+  })  
+  test('should return empty array', () => { 
+    const data: IZellerCustomer[] = []    
+
+    const result = groupByLetter(data);
+    
+    expect(result).toMatchObject([])
+  })  
+
+ })

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { StatusBar, StyleSheet, Text, View, Animated, SectionList, TouchableOpacity, useAnimatedValue, Button, Image, TextInput } from 'react-native'
+import { StatusBar, StyleSheet, Text, View, Animated, SectionList, TouchableOpacity, useAnimatedValue, Button, Image, TextInput, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import theme from '../styles/theme'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -14,6 +14,7 @@ import useTabAnimation from '../hooks/useTabAnimation'
 import { useQuery } from '../realm/setup'
 import { ZellerCustomer } from '../realm/models/ZellerCustomer'
 import { Results } from 'realm'
+import { groupByLetter } from '../utils/functinos'
 
 
 type DashBoardScreenProps = NativeStackScreenProps<StackParamList, 'Dashboard'>;
@@ -42,22 +43,7 @@ const DashBoardScreen: React.FC<DashBoardScreenProps> = ({ navigation }) => {
         animateToTab(index);
 
     };
-    const groupByLetter = (data: IZellerCustomer[]) => {
-        const sorted = [...data].sort((a, b) => a.name.localeCompare(b.name));
-        const grouped: { title: string; data: IZellerCustomer[] }[] = [];
 
-        sorted.forEach((item) => {
-            const letter = item.name[0].toUpperCase();
-            const section = grouped.find((g) => g.title === letter);
-            if (section) {
-                section.data.push(item);
-            } else {
-                grouped.push({ title: letter, data: [item] });
-            }
-        });
-
-        return grouped;
-    };
     const renderList = (filter: EROLES, mZellerCustomerList: Results<ZellerCustomer>, searchByName: string) => {
 
 
@@ -116,7 +102,6 @@ const DashBoardScreen: React.FC<DashBoardScreenProps> = ({ navigation }) => {
                 tabWidth={tabWidth}
                 translateX={translateX as Animated.Value}
             />
-
 
             <TextInput
                 placeholder='Search by name...'
